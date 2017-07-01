@@ -1,0 +1,87 @@
+<style>
+    .save_box {
+        margin: 10px 20px;
+    }
+
+    .save_line {
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        background: #fff;
+    }
+
+    .save_line td {
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+
+    .save_line .success {
+        background: #40937f;
+        color: #fff;
+        border: 1px solid #12614e;
+    }
+
+    .save_line .failed {
+        background: #ff9b9b;
+        color: #fff;
+        border: 1px solid #cc6e6e;
+    }
+
+    .save_line div {
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        left: 50%;
+        top: 50%;
+        margin-left: -13px;
+        margin-top: -13px;
+        background: none;
+        z-index: 2;
+    }
+
+    .save_line .success div {
+        background: url(css/images/ico_save.png) center no-repeat;
+    }
+
+    .save_line .failed div {
+        background: url(css/images/shibai.png) center no-repeat;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+
+    });
+</script>
+<body style="background:#ecf7f5">
+<div class="save_box">
+    <table class="save_line" width="100%;" height="36" border="0">
+        <tr>
+            <td class="success">临时测试
+                <div></div>
+            </td>
+            <td class="failed">临时测试
+                <div></div>
+            </td>
+            <td>临时测试
+                <div></div>
+            </td>
+            <td>临时测试
+                <div></div>
+            </td>
+            <td>临时测试
+                <div></div>
+            </td>
+            <td>临时测试
+                <div></div>
+            </td>
+            <td>临时测试
+                <div></div>
+            </td>
+            <td>临时测试
+                <div></div>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

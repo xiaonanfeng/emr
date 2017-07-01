@@ -1,0 +1,45 @@
+-- Add/modify columns 
+alter table MIS_EMR_BASICINFO modify chief_complaint VARCHAR2(80);
+
+/**
+V_MIS_EMR_QUERY 
+ID应该对应MIS_EMR_PREAID_VS里的doctor_sign
+添加IS_HOSPITALIZED
+**/
+
+CREATE OR REPLACE VIEW V_MIS_EMR_QUERY AS
+SELECT B.ID EMRID,
+          A.HJSJ,
+          B.LSH,
+          B.CCXH,
+          B.NAME,
+          B.SEX,
+          B.AGE,
+          B.STAGE,
+          B.PHONE,
+          B.CAUSE,
+          B.DISEASE_TYPE,
+          B.CONDITION,
+          b.is_hospitalized,
+          D.PRIM_DIAG,
+          D.Prim_Diag_r,
+          D.Doctor_Sign as id,
+          C.SZFZ,
+          B.PRE_EMC_RESULT,
+          B.SENT_TO,
+          --E.ID,
+          B.IS_COMMITTED
+     FROM CALL_INFO A,
+          AMBUL_OUTD_INFO C,
+          AMBUL_OUTD_STAFF E,
+          MIS_EMR_BASICINFO B
+          LEFT JOIN MIS_EMR_PREAID_VS D ON D.ID = B.ID
+    WHERE     A.LSH = B.LSH
+          AND B.LSH = C.LSH
+          AND B.CCXH = C.CCXH
+          AND E.LSH = B.LSH
+          AND E.CCXH = B.CCXH
+          AND E.LX = 40;
+
+
+

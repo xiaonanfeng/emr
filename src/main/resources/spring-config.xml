@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+>
+
+    <!-- 数据源 -->
+    <!-- 不需要安装任何数据库的客户端程序，只需要按照格式配置即可。当然程序提供用客户端的连接方式，详见下面的注释 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@${db.jdbcUrl}"/>
+        <property name="user" value="${db.user}"/>
+        <property name="password" value="${db.password}"/>
+    </bean>
+
+    <!-- SessionFactory -->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- ibernate的相关属性配置 -->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">none</prop>
+                <prop key="hibernate.show_sql">${db.show_sql}</prop>
+                <prop key="hibernate.format_sql">${db.format_sql}</prop>
+                <prop key="hibernate.jdbc.use_streams_for_binary">true</prop>
+                <prop key="hibernate.jdbc.fetch_size">1</prop>
+                <prop key="hibernate.jdbc.batch_size">0</prop>
+                <prop key="current_session_context_class">thread</prop>
+                <prop key="javax.persistence.validation.mode">none</prop>
+                <prop key="hibernate.connection.url">jdbc:oracle:thin:@//localhost:1521/orcl</prop>
+                <prop key="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</prop>
+            </props>
+        </property>
+        <!-- 实体类扫描器 -->
+        <property name="packagesToScan">
+            <value>com.zxit.model</value>
+        </property>
+    </bean>
+
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <!--配置一个JdbcTemplate实例 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 事务管理器 -->
+    <bean id="txManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- 事务注解 -->
+    <tx:annotation-driven transaction-manager="txManager" proxy-target-class="false"/>
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="init*" read-only="true"/>
+            <tx:method name="*"/>  <!-- 其他事务在require中运行 -->
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- aop事务切面 -->
+    <aop:config>
+        <aop:pointcut expression="execution(public * com.zxit.service.impl.*.*(..))" id="businessService"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="businessService"/>
+    </aop:config>
+
+
+    <!-- 将多个配置文件读取到容器中，交给Spring管理 -->
+    <context:property-placeholder location="classpath*:config.properties" file-encoding="UTF-8"/>
+
+
+    <!-- 	自动提交 -->
+    <bean id="commitEmr" class="com.zxit.action.VMisEmrCommitController">
+        <property name="autoCommit" value="${sys.autoCommit}"></property>
+        <property name="commitTimeScope" value="${sys.commitTimeScope}"></property>
+    </bean>
+    <!-- 	自动驳回修改审核 -->
+    <bean id="refuseMdfReq" class="com.zxit.action.VMisEmrMdfReqController">
+        <property name="autoRec" value="${sys.autoRec}"></property>
+        <property name="recTimeScope" value="${sys.recTimeScope}"></property>
+    </bean>
+
+    <task:scheduled-tasks>
+        <task:scheduled ref="commitEmr" method="commitEmr" cron="0 0/${sys.autoCommitTimer} * * * ?"/>
+        <task:scheduled ref="refuseMdfReq" method="recEmrMdfReq" cron="0 0/${sys.autoCommitTimer} * * * ?"/>
+    </task:scheduled-tasks>
+
+    <!--     加载系统配置 -->
+    <bean id="systemConfig" class="com.zxit.share.SystemConfig">
+        <property name="checker" value="${sys.checker}"></property>
+        <property name="xzbm" value="${sys.xzbm}"></property>
+        <property name="systemTitle" value="${sys.systemTitle}"></property>
+        <property name="printTitle" value="${sys.printTitle}"></property>
+        <property name="shareMode" value="${sys.shareMode}"></property>
+        <property name="debugMode" value="${sys.debugMode}"></property>
+        <property name="onlyDoctorLogin" value="${sys.onlyDoctorLogin}"></property>
+        <property name="errLogin" value="${sys.errLogin}"></property>
+        <property name="errNotDoctor" value="${sys.errNotDoctor}"></property>
+        <property name="errDuty" value="${sys.errDuty}"></property>
+        <property name="exitSentTo" value="${sys.exitSentTo}"></property>
+        <property name="exitSzfz" value="${sys.exitSzfz}"></property>
+        <property name="filePath" value="${sys.filePath}"></property>
+        <property name="fileType" value="${sys.fileType}"></property>
+        <property name="maxPerPage" value="${sys.maxPerPage}"></property>
+        <property name="emrCode" value="${sys.emrCode}"></property>
+        <property name="imgHW" value="${sys.imgHW}"></property>
+        <property name="printPage" value="${sys.printPage}"></property>
+        <property name="alarmIP" value="${sys.alarmIP}"></property>
+        <property name="initCmplt" value="${sys.initCmplt}"></property>
+        <property name="autoReqScope" value="${sys.autoReqScope}"></property>
+
+        <!-- 		页面显示部分 -->
+        <property name="ecgTdText" value="${page.ecgTdText}"></property>
+        <property name="ecgDiagTdText" value="${page.ecgDiagTdText}"></property>
+    </bean>
+</beans>

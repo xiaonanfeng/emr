@@ -1,0 +1,104 @@
+.asTable select {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.asTable {
+    margin: 10px 20px;
+}
+
+.asTable input[type='text'] {
+    width: 100px;
+
+}
+
+.asTable .text_decollator {
+    margin: 0px 0px 5px -15px;
+}
+
+.asTable li {
+    color: rgba(0, 0, 0, 0.6);
+    width: 300px;
+    display: inline-block;
+    margin: 0px 5px;
+    min-height: 44px;
+    vertical-align: top;
+
+}
+
+.asTable .double_li {
+    width: 600px;
+}
+
+.asTable li span:first-child {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    padding: 0px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.asTable li span:nth-child(2) {
+    color: #003d5f;
+}
+
+.asTable li span {
+    vertical-align: top;
+    font-size: 16px;
+}
+
+.asTable li input[type='text'],
+.asTable li textarea,
+.asTable li .data-text {
+    display: inline-block;
+    vertical-align: top;
+    color: #003d5f;
+    background: rgba(0, 0, 0, 0.03);
+    height: 24px;
+}
+
+.asTable li textarea {
+    width: calc(100% - 110px) !important;
+}
+
+.over-line {
+    display: block !important;
+    width: 100% !important;
+    height: 80px !important;
+}
+
+.over-line input {
+    width: calc(100% - 120px) !important;
+}
+
+.half-line {
+    display: inline-block !important;
+    width: 614px !important;
+}
+
+.half-line .radio {
+    vertical-align: top;
+}
+
+.half-line .radio input[type='radio'] {
+    margin: 0px 14px 0px 5px;
+}
+
+.half-line .checkbox {
+    display: inline-block;
+    width: 400px;
+    vertical-align: top;
+}
+
+.half-line .checkbox input[type='checkbox'] {
+    margin: 0px 25px 12px 5px;
+}
+
+.spl-line select {
+    width: 55px;
+}
+
+.t-datetime {
+    width: 135px !important;
+}

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <link rel="stylesheet" href="css/Multi-Column-Select.css">
+    <link href='http://fonts.useso.com/css?family=Ubuntu+Condensed|Ubuntu' rel='stylesheet' type='text/css'>
+    <style>
+        .clear {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="htmleaf-container">
+
+    <div class='wrapper'>
+        <h2>Single Selection Multi-Column-Select</h2>
+        <form action="" method="GET">
+
+            <div id="selectcontrol">
+                <select name="car">
+                    <option value="Audi">Audi</option>
+                    <option value="Bugatti" selected>Bugatti</option>
+                    <option value="Chrysler">Chrysler</option>
+                    <option value="Daihatsu">Daihatsu</option>
+                    <option value="Ford">Ford</option>
+                    <option value="GM">General Motors</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Infiniti">Infiniti</option>
+                </select>
+            </div>
+            <div class="clear"></div>
+            <input type="submit" value="Submit" class="btn"/>
+        </form>
+
+        <h2>Multiple Selection Multi-Column-Select</h2>
+
+        <form action="" method="GET">
+
+            <div id="selectcontrolm">
+
+                <select name="cassr" multiple>
+                    <option value="Audi" selected>Audi22</option>
+                    <option value="Bugatti">Bugatti</option>
+                    <option value="Chrysler">Chrysler</option>
+                    <option value="Daihatsu" selected>Daihatsu</option>
+                    <option value="Ford">Ford</option>
+                    <option value="GM">General Motors</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Infiniti">Infiniti</option>
+                </select>
+
+            </div>
+
+            <div class="clear">
+
+            </div>
+            <input type="submit" value="Submit" class="btn"/>
+        </form>
+
+    </div>
+
+</div>
+
+<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+<!--<![endif]-->
+<script src="js/Multi-Column-Select.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#selectcontrol').MultiColumnSelect({
+            menuclass: 'mcs',
+            openmenuClass: 'mcs-open',
+            openmenuText: 'Choose an Option...',
+            containerClass: 'mcs-container',
+            itemClass: 'mcs-item',
+            duration: 200,
+            onOpen: function () {
+                // some action
+            },
+            onClose: function () {
+                // some action
+            },
+            onItemSelect: function () {
+                alert($('#selectcontrol').val());
+
+            }
+        });
+
+        $('#selectcontrolm').MultiColumnSelect({
+            multiple: true,
+            menuclass: 'mcs',
+            openmenuClass: 'mcs-open',
+            openmenuText: 'Choose an Option...',
+            containerClass: 'mcs-container',
+            itemClass: 'mcs-item',
+            idprefix: 'yourOwnID-',
+            hideclass: 'hidden',
+            openclass: 'open',
+            duration: 200,
+            hideselect: false,
+            onOpen: function () {
+                // some action
+            },
+            onClose: function () {
+                // some action
+            },
+            onItemSelect: function () {
+
+                alert($("select[name='cassr']").val());
+
+            }
+
+        });
+
+        $('#selectcontrolm').MultiColumnSelectAddItem('New', 'New Item');
+
+    });
+</script>
+</body>
+</html>

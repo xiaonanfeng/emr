@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd">
+
+    <tlib-version>1.0</tlib-version><!-- 代表标签库的版本号 -->
+    <jsp-version>2.0</jsp-version><!-- 代表jsp的版本 -->
+    <short-name>myTag</short-name><!-- 你的标签库的简称 -->
+    <uri>/tags</uri>
+
+    <!-- 	系统字典 -->
+    <tag>
+        <name>SysCode</name>
+        <tag-class>com.zxit.share.TagSysCode</tag-class>
+        <body-content>empty</body-content>
+        <!-- 元素id -->
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!-- 元素name -->
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!-- 元素的样式 -->
+        <attribute>
+            <name>style</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!-- 元素的类型id对应sys_code里的typeid -->
+        <attribute>
+            <name>typeId</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!-- 元素的默认值 -->
+        <attribute>
+            <name>defaltValue</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!-- 元素的当前值 -->
+        <attribute>
+            <name>value</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <!-- 	结构代码标签 -->
+    <tag>
+        <name>SysOrgInfo</name>
+        <tag-class>com.zxit.share.TagSysOrgInfo</tag-class>
+        <body-content>empty</body-content>
+        <!-- 元素id -->
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!-- 元素name -->
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <!-- 机构类型 -->
+        <attribute>
+            <name>type</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+</taglib>

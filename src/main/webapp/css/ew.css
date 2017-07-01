@@ -1,0 +1,85 @@
+.debugMode0 {
+    display: none;
+}
+
+.debugMode1 {
+    display: block;
+}
+
+.commitStyle0 {
+    text-align: center;
+    display: block;
+}
+
+.commitStyle1 {
+    text-align: center;
+    display: none
+}
+
+/*****By 景涛涛*****/
+tr.selected {
+    background-color: rgb(61, 186, 227);
+}
+
+tr.error {
+    background-color: rgb(232, 121, 121);
+}
+
+.slide {
+    width: 100%;
+    text-align: center;
+}
+
+.slide > .up-icon {
+    background-image: url(images/ZXICO/slide.png);
+    background-position: 20px 0px;
+    padding: 0px 10px;
+    margin: auto;
+}
+
+.slide > .down-icon {
+    background-image: url(images/ZXICO/slide.png);
+    background-position: 0px 0px;
+    padding: 0px 10px;
+    margin: auto;
+}
+
+/**翻页样式
+a.next{
+	background:url("images/ZXICO/nextPage.gif") no-repeat;
+}
+
+a.pre{
+	background:url("images/ZXICO/prePage.gif") no-repeat;
+}
+**/
+
+/******验证样式********/
+label {
+    color: red;
+    font-weight: 15px;
+}
+
+input.error {
+    border: 1px solid red;
+}
+
+label.error {
+    /**background:url("./demo/images/unchecked.gif") no-repeat 0px 0px;**/
+
+    padding-left: 16px;
+
+    padding-bottom: 2px;
+
+    font-weight: bold;
+
+    color: red;
+
+    text-decoration: blink;
+}
+
+label.checked {
+    background: url("./demo/images/checked.gif") no-repeat 0px 0px;
+}
+
+/****************/

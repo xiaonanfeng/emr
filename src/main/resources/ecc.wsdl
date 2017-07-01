@@ -1,0 +1,1893 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="http://tempuri.org/">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+            <s:element name="RequestLocation">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="RequestLocationResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="RequestLocationResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="mt">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="mtResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="mtResult"
+                                   type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="query">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="queryResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="queryResult"
+                                   type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="getReport">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="getReportResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="getReportResult"
+                                   type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="getMO">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="getMOResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="getMOResult"
+                                   type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GET_SP_PRES_ACCEPT_INFO">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="LSH" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GET_SP_PRES_ACCEPT_INFOResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="GET_SP_PRES_ACCEPT_INFOResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SP_GET_AMBUL_OUTD_INFO">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="LSH" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SP_GET_AMBUL_OUTD_INFOResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="SP_GET_AMBUL_OUTD_INFOResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SP_GET_EMT_INFO">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="CLID" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SP_GET_EMT_INFOResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="SP_GET_EMT_INFOResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Get_All_CLLB_INFO">
+                <s:complexType/>
+            </s:element>
+            <s:element name="Get_All_CLLB_INFOResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="Get_All_CLLB_INFOResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SP_GET_ALL_TerminalDB_INFO">
+                <s:complexType/>
+            </s:element>
+            <s:element name="SP_GET_ALL_TerminalDB_INFOResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="SP_GET_ALL_TerminalDB_INFOResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Get_All_REQUEST_INFO">
+                <s:complexType/>
+            </s:element>
+            <s:element name="Get_All_REQUEST_INFOResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="Get_All_REQUEST_INFOResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Get_All_CONFERENCE_INFO">
+                <s:complexType/>
+            </s:element>
+            <s:element name="Get_All_CONFERENCE_INFOResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="Get_All_CONFERENCE_INFOResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="RMG_INSERT_CONFRENCE">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="RMG_INSERT_CONFRENCEResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="RMG_INSERT_CONFRENCEResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="INSERT_TMG_REQUEST">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="INSERT_TMG_REQUESTResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="INSERT_TMG_REQUESTResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SP_UPDATE_SESSIONS">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SP_UPDATE_SESSIONSResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="SP_UPDATE_SESSIONSResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="RMG_INSERT_ADVICE">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="RMG_INSERT_ADVICEResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="RMG_INSERT_ADVICEResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="remoteRequire">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="remoteRequireResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="remoteRequireResult"
+                                   type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Check_Sys_Member_Info">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+                        <s:element minOccurs="0" maxOccurs="1" name="password"
+                                   type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Check_Sys_Member_InfoResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="Check_Sys_Member_InfoResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Get_All_V_ORG_INFO">
+                <s:complexType/>
+            </s:element>
+            <s:element name="Get_All_V_ORG_INFOResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="Get_All_V_ORG_INFOResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SP_GET_CONFERENCE_PERIOD">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="startTime"
+                                   type="s:string"/>
+                        <s:element minOccurs="0" maxOccurs="1" name="endTime"
+                                   type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SP_GET_CONFERENCE_PERIODResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="SP_GET_CONFERENCE_PERIODResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SP_GET_CONFERENCE_SESSIONS">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="conferenceId"
+                                   type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SP_GET_CONFERENCE_SESSIONSResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1"
+                                   name="SP_GET_CONFERENCE_SESSIONSResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="string" nillable="true" type="s:string"/>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="RequestLocationSoapIn">
+        <wsdl:part name="parameters" element="tns:RequestLocation"/>
+    </wsdl:message>
+    <wsdl:message name="RequestLocationSoapOut">
+        <wsdl:part name="parameters" element="tns:RequestLocationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="mtSoapIn">
+        <wsdl:part name="parameters" element="tns:mt"/>
+    </wsdl:message>
+    <wsdl:message name="mtSoapOut">
+        <wsdl:part name="parameters" element="tns:mtResponse"/>
+    </wsdl:message>
+    <wsdl:message name="querySoapIn">
+        <wsdl:part name="parameters" element="tns:query"/>
+    </wsdl:message>
+    <wsdl:message name="querySoapOut">
+        <wsdl:part name="parameters" element="tns:queryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getReportSoapIn">
+        <wsdl:part name="parameters" element="tns:getReport"/>
+    </wsdl:message>
+    <wsdl:message name="getReportSoapOut">
+        <wsdl:part name="parameters" element="tns:getReportResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getMOSoapIn">
+        <wsdl:part name="parameters" element="tns:getMO"/>
+    </wsdl:message>
+    <wsdl:message name="getMOSoapOut">
+        <wsdl:part name="parameters" element="tns:getMOResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GET_SP_PRES_ACCEPT_INFOSoapIn">
+        <wsdl:part name="parameters" element="tns:GET_SP_PRES_ACCEPT_INFO"/>
+    </wsdl:message>
+    <wsdl:message name="GET_SP_PRES_ACCEPT_INFOSoapOut">
+        <wsdl:part name="parameters" element="tns:GET_SP_PRES_ACCEPT_INFOResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_AMBUL_OUTD_INFOSoapIn">
+        <wsdl:part name="parameters" element="tns:SP_GET_AMBUL_OUTD_INFO"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_AMBUL_OUTD_INFOSoapOut">
+        <wsdl:part name="parameters" element="tns:SP_GET_AMBUL_OUTD_INFOResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_EMT_INFOSoapIn">
+        <wsdl:part name="parameters" element="tns:SP_GET_EMT_INFO"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_EMT_INFOSoapOut">
+        <wsdl:part name="parameters" element="tns:SP_GET_EMT_INFOResponse"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_CLLB_INFOSoapIn">
+        <wsdl:part name="parameters" element="tns:Get_All_CLLB_INFO"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_CLLB_INFOSoapOut">
+        <wsdl:part name="parameters" element="tns:Get_All_CLLB_INFOResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_ALL_TerminalDB_INFOSoapIn">
+        <wsdl:part name="parameters" element="tns:SP_GET_ALL_TerminalDB_INFO"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_ALL_TerminalDB_INFOSoapOut">
+        <wsdl:part name="parameters" element="tns:SP_GET_ALL_TerminalDB_INFOResponse"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_REQUEST_INFOSoapIn">
+        <wsdl:part name="parameters" element="tns:Get_All_REQUEST_INFO"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_REQUEST_INFOSoapOut">
+        <wsdl:part name="parameters" element="tns:Get_All_REQUEST_INFOResponse"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_CONFERENCE_INFOSoapIn">
+        <wsdl:part name="parameters" element="tns:Get_All_CONFERENCE_INFO"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_CONFERENCE_INFOSoapOut">
+        <wsdl:part name="parameters" element="tns:Get_All_CONFERENCE_INFOResponse"/>
+    </wsdl:message>
+    <wsdl:message name="RMG_INSERT_CONFRENCESoapIn">
+        <wsdl:part name="parameters" element="tns:RMG_INSERT_CONFRENCE"/>
+    </wsdl:message>
+    <wsdl:message name="RMG_INSERT_CONFRENCESoapOut">
+        <wsdl:part name="parameters" element="tns:RMG_INSERT_CONFRENCEResponse"/>
+    </wsdl:message>
+    <wsdl:message name="INSERT_TMG_REQUESTSoapIn">
+        <wsdl:part name="parameters" element="tns:INSERT_TMG_REQUEST"/>
+    </wsdl:message>
+    <wsdl:message name="INSERT_TMG_REQUESTSoapOut">
+        <wsdl:part name="parameters" element="tns:INSERT_TMG_REQUESTResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SP_UPDATE_SESSIONSSoapIn">
+        <wsdl:part name="parameters" element="tns:SP_UPDATE_SESSIONS"/>
+    </wsdl:message>
+    <wsdl:message name="SP_UPDATE_SESSIONSSoapOut">
+        <wsdl:part name="parameters" element="tns:SP_UPDATE_SESSIONSResponse"/>
+    </wsdl:message>
+    <wsdl:message name="RMG_INSERT_ADVICESoapIn">
+        <wsdl:part name="parameters" element="tns:RMG_INSERT_ADVICE"/>
+    </wsdl:message>
+    <wsdl:message name="RMG_INSERT_ADVICESoapOut">
+        <wsdl:part name="parameters" element="tns:RMG_INSERT_ADVICEResponse"/>
+    </wsdl:message>
+    <wsdl:message name="remoteRequireSoapIn">
+        <wsdl:part name="parameters" element="tns:remoteRequire"/>
+    </wsdl:message>
+    <wsdl:message name="remoteRequireSoapOut">
+        <wsdl:part name="parameters" element="tns:remoteRequireResponse"/>
+    </wsdl:message>
+    <wsdl:message name="Check_Sys_Member_InfoSoapIn">
+        <wsdl:part name="parameters" element="tns:Check_Sys_Member_Info"/>
+    </wsdl:message>
+    <wsdl:message name="Check_Sys_Member_InfoSoapOut">
+        <wsdl:part name="parameters" element="tns:Check_Sys_Member_InfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_V_ORG_INFOSoapIn">
+        <wsdl:part name="parameters" element="tns:Get_All_V_ORG_INFO"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_V_ORG_INFOSoapOut">
+        <wsdl:part name="parameters" element="tns:Get_All_V_ORG_INFOResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_CONFERENCE_PERIODSoapIn">
+        <wsdl:part name="parameters" element="tns:SP_GET_CONFERENCE_PERIOD"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_CONFERENCE_PERIODSoapOut">
+        <wsdl:part name="parameters" element="tns:SP_GET_CONFERENCE_PERIODResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_CONFERENCE_SESSIONSSoapIn">
+        <wsdl:part name="parameters" element="tns:SP_GET_CONFERENCE_SESSIONS"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_CONFERENCE_SESSIONSSoapOut">
+        <wsdl:part name="parameters" element="tns:SP_GET_CONFERENCE_SESSIONSResponse"/>
+    </wsdl:message>
+    <wsdl:message name="RequestLocationHttpGetIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="RequestLocationHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="mtHttpGetIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="mtHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="queryHttpGetIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="queryHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="getReportHttpGetIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="getReportHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="getMOHttpGetIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="getMOHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="GET_SP_PRES_ACCEPT_INFOHttpGetIn">
+        <wsdl:part name="LSH" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="GET_SP_PRES_ACCEPT_INFOHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_AMBUL_OUTD_INFOHttpGetIn">
+        <wsdl:part name="LSH" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_AMBUL_OUTD_INFOHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_EMT_INFOHttpGetIn">
+        <wsdl:part name="CLID" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_EMT_INFOHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_CLLB_INFOHttpGetIn"/>
+    <wsdl:message name="Get_All_CLLB_INFOHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_ALL_TerminalDB_INFOHttpGetIn"/>
+    <wsdl:message name="SP_GET_ALL_TerminalDB_INFOHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_REQUEST_INFOHttpGetIn"/>
+    <wsdl:message name="Get_All_REQUEST_INFOHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_CONFERENCE_INFOHttpGetIn"/>
+    <wsdl:message name="Get_All_CONFERENCE_INFOHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="RMG_INSERT_CONFRENCEHttpGetIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="RMG_INSERT_CONFRENCEHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="INSERT_TMG_REQUESTHttpGetIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="INSERT_TMG_REQUESTHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_UPDATE_SESSIONSHttpGetIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_UPDATE_SESSIONSHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="RMG_INSERT_ADVICEHttpGetIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="RMG_INSERT_ADVICEHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="remoteRequireHttpGetIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="remoteRequireHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="Check_Sys_Member_InfoHttpGetIn">
+        <wsdl:part name="id" type="s:string"/>
+        <wsdl:part name="password" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="Check_Sys_Member_InfoHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_V_ORG_INFOHttpGetIn"/>
+    <wsdl:message name="Get_All_V_ORG_INFOHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_CONFERENCE_PERIODHttpGetIn">
+        <wsdl:part name="startTime" type="s:string"/>
+        <wsdl:part name="endTime" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_CONFERENCE_PERIODHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_CONFERENCE_SESSIONSHttpGetIn">
+        <wsdl:part name="conferenceId" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_CONFERENCE_SESSIONSHttpGetOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="RequestLocationHttpPostIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="RequestLocationHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="mtHttpPostIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="mtHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="queryHttpPostIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="queryHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="getReportHttpPostIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="getReportHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="getMOHttpPostIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="getMOHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="GET_SP_PRES_ACCEPT_INFOHttpPostIn">
+        <wsdl:part name="LSH" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="GET_SP_PRES_ACCEPT_INFOHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_AMBUL_OUTD_INFOHttpPostIn">
+        <wsdl:part name="LSH" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_AMBUL_OUTD_INFOHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_EMT_INFOHttpPostIn">
+        <wsdl:part name="CLID" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_EMT_INFOHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_CLLB_INFOHttpPostIn"/>
+    <wsdl:message name="Get_All_CLLB_INFOHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_ALL_TerminalDB_INFOHttpPostIn"/>
+    <wsdl:message name="SP_GET_ALL_TerminalDB_INFOHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_REQUEST_INFOHttpPostIn"/>
+    <wsdl:message name="Get_All_REQUEST_INFOHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_CONFERENCE_INFOHttpPostIn"/>
+    <wsdl:message name="Get_All_CONFERENCE_INFOHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="RMG_INSERT_CONFRENCEHttpPostIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="RMG_INSERT_CONFRENCEHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="INSERT_TMG_REQUESTHttpPostIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="INSERT_TMG_REQUESTHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_UPDATE_SESSIONSHttpPostIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_UPDATE_SESSIONSHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="RMG_INSERT_ADVICEHttpPostIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="RMG_INSERT_ADVICEHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="remoteRequireHttpPostIn">
+        <wsdl:part name="msg" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="remoteRequireHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="Check_Sys_Member_InfoHttpPostIn">
+        <wsdl:part name="id" type="s:string"/>
+        <wsdl:part name="password" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="Check_Sys_Member_InfoHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="Get_All_V_ORG_INFOHttpPostIn"/>
+    <wsdl:message name="Get_All_V_ORG_INFOHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_CONFERENCE_PERIODHttpPostIn">
+        <wsdl:part name="startTime" type="s:string"/>
+        <wsdl:part name="endTime" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_CONFERENCE_PERIODHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_CONFERENCE_SESSIONSHttpPostIn">
+        <wsdl:part name="conferenceId" type="s:string"/>
+    </wsdl:message>
+    <wsdl:message name="SP_GET_CONFERENCE_SESSIONSHttpPostOut">
+        <wsdl:part name="Body" element="tns:string"/>
+    </wsdl:message>
+    <wsdl:portType name="lbsSoap">
+        <wsdl:operation name="RequestLocation">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+                手机地址定位 {"LSH":"123","Phone":"15298xxxxxx","Name":"Test"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:RequestLocationSoapIn"/>
+            <wsdl:output message="tns:RequestLocationSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="mt">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+                短信下行接口 {"LSH":"123","Phone":"15298xxxxxx","Content":"123456"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:mtSoapIn"/>
+            <wsdl:output message="tns:mtSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="query">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">账户余额/用户id查询接口
+                {"cmd":"balance"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:querySoapIn"/>
+            <wsdl:output message="tns:querySoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="getReport">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询状态报告接口
+                {"userid":"userid"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:getReportSoapIn"/>
+            <wsdl:output message="tns:getReportSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="getMO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询上行短信接口
+                {"userid":"userid"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:getMOSoapIn"/>
+            <wsdl:output message="tns:getMOSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GET_SP_PRES_ACCEPT_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入LSH获取受理信息
+            </wsdl:documentation>
+            <wsdl:input message="tns:GET_SP_PRES_ACCEPT_INFOSoapIn"/>
+            <wsdl:output message="tns:GET_SP_PRES_ACCEPT_INFOSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_AMBUL_OUTD_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入LSH获取出车信息
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_AMBUL_OUTD_INFOSoapIn"/>
+            <wsdl:output message="tns:SP_GET_AMBUL_OUTD_INFOSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_EMT_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入CLID获取车载视频终端
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_EMT_INFOSoapIn"/>
+            <wsdl:output message="tns:SP_GET_EMT_INFOSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CLLB_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取车辆列表
+            </wsdl:documentation>
+            <wsdl:input message="tns:Get_All_CLLB_INFOSoapIn"/>
+            <wsdl:output message="tns:Get_All_CLLB_INFOSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_ALL_TerminalDB_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取车载终端列表的视图
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_ALL_TerminalDB_INFOSoapIn"/>
+            <wsdl:output message="tns:SP_GET_ALL_TerminalDB_INFOSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_REQUEST_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取当天远程指导请求
+            </wsdl:documentation>
+            <wsdl:input message="tns:Get_All_REQUEST_INFOSoapIn"/>
+            <wsdl:output message="tns:Get_All_REQUEST_INFOSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CONFERENCE_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取当天未完成远程指导会议
+            </wsdl:documentation>
+            <wsdl:input message="tns:Get_All_CONFERENCE_INFOSoapIn"/>
+            <wsdl:output message="tns:Get_All_CONFERENCE_INFOSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_CONFRENCE">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入或更新视频会议表
+            </wsdl:documentation>
+            <wsdl:input message="tns:RMG_INSERT_CONFRENCESoapIn"/>
+            <wsdl:output message="tns:RMG_INSERT_CONFRENCESoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="INSERT_TMG_REQUEST">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入或更新远程指导请求记录
+            </wsdl:documentation>
+            <wsdl:input message="tns:INSERT_TMG_REQUESTSoapIn"/>
+            <wsdl:output message="tns:INSERT_TMG_REQUESTSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_UPDATE_SESSIONS">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入远程指导与会记录表
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_UPDATE_SESSIONSSoapIn"/>
+            <wsdl:output message="tns:SP_UPDATE_SESSIONSSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_ADVICE">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新远程指导指导意见
+            </wsdl:documentation>
+            <wsdl:input message="tns:RMG_INSERT_ADVICESoapIn"/>
+            <wsdl:output message="tns:RMG_INSERT_ADVICESoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="remoteRequire">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">远程医学指导请求
+                {"userid":"userid"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:remoteRequireSoapIn"/>
+            <wsdl:output message="tns:remoteRequireSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Check_Sys_Member_Info">
+            <wsdl:input message="tns:Check_Sys_Member_InfoSoapIn"/>
+            <wsdl:output message="tns:Check_Sys_Member_InfoSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_V_ORG_INFO">
+            <wsdl:input message="tns:Get_All_V_ORG_INFOSoapIn"/>
+            <wsdl:output message="tns:Get_All_V_ORG_INFOSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_PERIOD">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入时间范围获取范围内所有会议
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_CONFERENCE_PERIODSoapIn"/>
+            <wsdl:output message="tns:SP_GET_CONFERENCE_PERIODSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_SESSIONS">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入会议ID查看所有参加会议的人
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_CONFERENCE_SESSIONSSoapIn"/>
+            <wsdl:output message="tns:SP_GET_CONFERENCE_SESSIONSSoapOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="lbsHttpGet">
+        <wsdl:operation name="RequestLocation">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+                手机地址定位 {"LSH":"123","Phone":"15298xxxxxx","Name":"Test"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:RequestLocationHttpGetIn"/>
+            <wsdl:output message="tns:RequestLocationHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="mt">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+                短信下行接口 {"LSH":"123","Phone":"15298xxxxxx","Content":"123456"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:mtHttpGetIn"/>
+            <wsdl:output message="tns:mtHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="query">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">账户余额/用户id查询接口
+                {"cmd":"balance"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:queryHttpGetIn"/>
+            <wsdl:output message="tns:queryHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="getReport">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询状态报告接口
+                {"userid":"userid"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:getReportHttpGetIn"/>
+            <wsdl:output message="tns:getReportHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="getMO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询上行短信接口
+                {"userid":"userid"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:getMOHttpGetIn"/>
+            <wsdl:output message="tns:getMOHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GET_SP_PRES_ACCEPT_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入LSH获取受理信息
+            </wsdl:documentation>
+            <wsdl:input message="tns:GET_SP_PRES_ACCEPT_INFOHttpGetIn"/>
+            <wsdl:output message="tns:GET_SP_PRES_ACCEPT_INFOHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_AMBUL_OUTD_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入LSH获取出车信息
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_AMBUL_OUTD_INFOHttpGetIn"/>
+            <wsdl:output message="tns:SP_GET_AMBUL_OUTD_INFOHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_EMT_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入CLID获取车载视频终端
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_EMT_INFOHttpGetIn"/>
+            <wsdl:output message="tns:SP_GET_EMT_INFOHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CLLB_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取车辆列表
+            </wsdl:documentation>
+            <wsdl:input message="tns:Get_All_CLLB_INFOHttpGetIn"/>
+            <wsdl:output message="tns:Get_All_CLLB_INFOHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_ALL_TerminalDB_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取车载终端列表的视图
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_ALL_TerminalDB_INFOHttpGetIn"/>
+            <wsdl:output message="tns:SP_GET_ALL_TerminalDB_INFOHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_REQUEST_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取当天远程指导请求
+            </wsdl:documentation>
+            <wsdl:input message="tns:Get_All_REQUEST_INFOHttpGetIn"/>
+            <wsdl:output message="tns:Get_All_REQUEST_INFOHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CONFERENCE_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取当天未完成远程指导会议
+            </wsdl:documentation>
+            <wsdl:input message="tns:Get_All_CONFERENCE_INFOHttpGetIn"/>
+            <wsdl:output message="tns:Get_All_CONFERENCE_INFOHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_CONFRENCE">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入或更新视频会议表
+            </wsdl:documentation>
+            <wsdl:input message="tns:RMG_INSERT_CONFRENCEHttpGetIn"/>
+            <wsdl:output message="tns:RMG_INSERT_CONFRENCEHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="INSERT_TMG_REQUEST">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入或更新远程指导请求记录
+            </wsdl:documentation>
+            <wsdl:input message="tns:INSERT_TMG_REQUESTHttpGetIn"/>
+            <wsdl:output message="tns:INSERT_TMG_REQUESTHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_UPDATE_SESSIONS">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入远程指导与会记录表
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_UPDATE_SESSIONSHttpGetIn"/>
+            <wsdl:output message="tns:SP_UPDATE_SESSIONSHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_ADVICE">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新远程指导指导意见
+            </wsdl:documentation>
+            <wsdl:input message="tns:RMG_INSERT_ADVICEHttpGetIn"/>
+            <wsdl:output message="tns:RMG_INSERT_ADVICEHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="remoteRequire">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">远程医学指导请求
+                {"userid":"userid"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:remoteRequireHttpGetIn"/>
+            <wsdl:output message="tns:remoteRequireHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Check_Sys_Member_Info">
+            <wsdl:input message="tns:Check_Sys_Member_InfoHttpGetIn"/>
+            <wsdl:output message="tns:Check_Sys_Member_InfoHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_V_ORG_INFO">
+            <wsdl:input message="tns:Get_All_V_ORG_INFOHttpGetIn"/>
+            <wsdl:output message="tns:Get_All_V_ORG_INFOHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_PERIOD">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入时间范围获取范围内所有会议
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_CONFERENCE_PERIODHttpGetIn"/>
+            <wsdl:output message="tns:SP_GET_CONFERENCE_PERIODHttpGetOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_SESSIONS">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入会议ID查看所有参加会议的人
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_CONFERENCE_SESSIONSHttpGetIn"/>
+            <wsdl:output message="tns:SP_GET_CONFERENCE_SESSIONSHttpGetOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="lbsHttpPost">
+        <wsdl:operation name="RequestLocation">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+                手机地址定位 {"LSH":"123","Phone":"15298xxxxxx","Name":"Test"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:RequestLocationHttpPostIn"/>
+            <wsdl:output message="tns:RequestLocationHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="mt">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+                短信下行接口 {"LSH":"123","Phone":"15298xxxxxx","Content":"123456"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:mtHttpPostIn"/>
+            <wsdl:output message="tns:mtHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="query">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">账户余额/用户id查询接口
+                {"cmd":"balance"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:queryHttpPostIn"/>
+            <wsdl:output message="tns:queryHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="getReport">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询状态报告接口
+                {"userid":"userid"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:getReportHttpPostIn"/>
+            <wsdl:output message="tns:getReportHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="getMO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询上行短信接口
+                {"userid":"userid"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:getMOHttpPostIn"/>
+            <wsdl:output message="tns:getMOHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GET_SP_PRES_ACCEPT_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入LSH获取受理信息
+            </wsdl:documentation>
+            <wsdl:input message="tns:GET_SP_PRES_ACCEPT_INFOHttpPostIn"/>
+            <wsdl:output message="tns:GET_SP_PRES_ACCEPT_INFOHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_AMBUL_OUTD_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入LSH获取出车信息
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_AMBUL_OUTD_INFOHttpPostIn"/>
+            <wsdl:output message="tns:SP_GET_AMBUL_OUTD_INFOHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_EMT_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入CLID获取车载视频终端
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_EMT_INFOHttpPostIn"/>
+            <wsdl:output message="tns:SP_GET_EMT_INFOHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CLLB_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取车辆列表
+            </wsdl:documentation>
+            <wsdl:input message="tns:Get_All_CLLB_INFOHttpPostIn"/>
+            <wsdl:output message="tns:Get_All_CLLB_INFOHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_ALL_TerminalDB_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取车载终端列表的视图
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_ALL_TerminalDB_INFOHttpPostIn"/>
+            <wsdl:output message="tns:SP_GET_ALL_TerminalDB_INFOHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_REQUEST_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取当天远程指导请求
+            </wsdl:documentation>
+            <wsdl:input message="tns:Get_All_REQUEST_INFOHttpPostIn"/>
+            <wsdl:output message="tns:Get_All_REQUEST_INFOHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CONFERENCE_INFO">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取当天未完成远程指导会议
+            </wsdl:documentation>
+            <wsdl:input message="tns:Get_All_CONFERENCE_INFOHttpPostIn"/>
+            <wsdl:output message="tns:Get_All_CONFERENCE_INFOHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_CONFRENCE">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入或更新视频会议表
+            </wsdl:documentation>
+            <wsdl:input message="tns:RMG_INSERT_CONFRENCEHttpPostIn"/>
+            <wsdl:output message="tns:RMG_INSERT_CONFRENCEHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="INSERT_TMG_REQUEST">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入或更新远程指导请求记录
+            </wsdl:documentation>
+            <wsdl:input message="tns:INSERT_TMG_REQUESTHttpPostIn"/>
+            <wsdl:output message="tns:INSERT_TMG_REQUESTHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_UPDATE_SESSIONS">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入远程指导与会记录表
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_UPDATE_SESSIONSHttpPostIn"/>
+            <wsdl:output message="tns:SP_UPDATE_SESSIONSHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_ADVICE">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新远程指导指导意见
+            </wsdl:documentation>
+            <wsdl:input message="tns:RMG_INSERT_ADVICEHttpPostIn"/>
+            <wsdl:output message="tns:RMG_INSERT_ADVICEHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="remoteRequire">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">远程医学指导请求
+                {"userid":"userid"}
+            </wsdl:documentation>
+            <wsdl:input message="tns:remoteRequireHttpPostIn"/>
+            <wsdl:output message="tns:remoteRequireHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Check_Sys_Member_Info">
+            <wsdl:input message="tns:Check_Sys_Member_InfoHttpPostIn"/>
+            <wsdl:output message="tns:Check_Sys_Member_InfoHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_V_ORG_INFO">
+            <wsdl:input message="tns:Get_All_V_ORG_INFOHttpPostIn"/>
+            <wsdl:output message="tns:Get_All_V_ORG_INFOHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_PERIOD">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入时间范围获取范围内所有会议
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_CONFERENCE_PERIODHttpPostIn"/>
+            <wsdl:output message="tns:SP_GET_CONFERENCE_PERIODHttpPostOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_SESSIONS">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">传入会议ID查看所有参加会议的人
+            </wsdl:documentation>
+            <wsdl:input message="tns:SP_GET_CONFERENCE_SESSIONSHttpPostIn"/>
+            <wsdl:output message="tns:SP_GET_CONFERENCE_SESSIONSHttpPostOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="lbsSoap" type="tns:lbsSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="RequestLocation">
+            <soap:operation soapAction="http://tempuri.org/RequestLocation"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="mt">
+            <soap:operation soapAction="http://tempuri.org/mt"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="query">
+            <soap:operation soapAction="http://tempuri.org/query"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getReport">
+            <soap:operation soapAction="http://tempuri.org/getReport"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMO">
+            <soap:operation soapAction="http://tempuri.org/getMO"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GET_SP_PRES_ACCEPT_INFO">
+            <soap:operation soapAction="http://tempuri.org/GET_SP_PRES_ACCEPT_INFO"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_AMBUL_OUTD_INFO">
+            <soap:operation soapAction="http://tempuri.org/SP_GET_AMBUL_OUTD_INFO"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_EMT_INFO">
+            <soap:operation soapAction="http://tempuri.org/SP_GET_EMT_INFO"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CLLB_INFO">
+            <soap:operation soapAction="http://tempuri.org/Get_All_CLLB_INFO"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_ALL_TerminalDB_INFO">
+            <soap:operation soapAction="http://tempuri.org/SP_GET_ALL_TerminalDB_INFO"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_REQUEST_INFO">
+            <soap:operation soapAction="http://tempuri.org/Get_All_REQUEST_INFO"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CONFERENCE_INFO">
+            <soap:operation soapAction="http://tempuri.org/Get_All_CONFERENCE_INFO"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_CONFRENCE">
+            <soap:operation soapAction="http://tempuri.org/RMG_INSERT_CONFRENCE"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="INSERT_TMG_REQUEST">
+            <soap:operation soapAction="http://tempuri.org/INSERT_TMG_REQUEST"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_UPDATE_SESSIONS">
+            <soap:operation soapAction="http://tempuri.org/SP_UPDATE_SESSIONS"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_ADVICE">
+            <soap:operation soapAction="http://tempuri.org/RMG_INSERT_ADVICE"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="remoteRequire">
+            <soap:operation soapAction="http://tempuri.org/remoteRequire"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Check_Sys_Member_Info">
+            <soap:operation soapAction="http://tempuri.org/Check_Sys_Member_Info"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_V_ORG_INFO">
+            <soap:operation soapAction="http://tempuri.org/Get_All_V_ORG_INFO"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_PERIOD">
+            <soap:operation soapAction="http://tempuri.org/SP_GET_CONFERENCE_PERIOD"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_SESSIONS">
+            <soap:operation soapAction="http://tempuri.org/SP_GET_CONFERENCE_SESSIONS"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="lbsSoap12" type="tns:lbsSoap">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="RequestLocation">
+            <soap12:operation soapAction="http://tempuri.org/RequestLocation"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="mt">
+            <soap12:operation soapAction="http://tempuri.org/mt"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="query">
+            <soap12:operation soapAction="http://tempuri.org/query"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getReport">
+            <soap12:operation soapAction="http://tempuri.org/getReport"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMO">
+            <soap12:operation soapAction="http://tempuri.org/getMO"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GET_SP_PRES_ACCEPT_INFO">
+            <soap12:operation soapAction="http://tempuri.org/GET_SP_PRES_ACCEPT_INFO"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_AMBUL_OUTD_INFO">
+            <soap12:operation soapAction="http://tempuri.org/SP_GET_AMBUL_OUTD_INFO"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_EMT_INFO">
+            <soap12:operation soapAction="http://tempuri.org/SP_GET_EMT_INFO"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CLLB_INFO">
+            <soap12:operation soapAction="http://tempuri.org/Get_All_CLLB_INFO"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_ALL_TerminalDB_INFO">
+            <soap12:operation soapAction="http://tempuri.org/SP_GET_ALL_TerminalDB_INFO"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_REQUEST_INFO">
+            <soap12:operation soapAction="http://tempuri.org/Get_All_REQUEST_INFO"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CONFERENCE_INFO">
+            <soap12:operation soapAction="http://tempuri.org/Get_All_CONFERENCE_INFO"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_CONFRENCE">
+            <soap12:operation soapAction="http://tempuri.org/RMG_INSERT_CONFRENCE"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="INSERT_TMG_REQUEST">
+            <soap12:operation soapAction="http://tempuri.org/INSERT_TMG_REQUEST"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_UPDATE_SESSIONS">
+            <soap12:operation soapAction="http://tempuri.org/SP_UPDATE_SESSIONS"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_ADVICE">
+            <soap12:operation soapAction="http://tempuri.org/RMG_INSERT_ADVICE"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="remoteRequire">
+            <soap12:operation soapAction="http://tempuri.org/remoteRequire"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Check_Sys_Member_Info">
+            <soap12:operation soapAction="http://tempuri.org/Check_Sys_Member_Info"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_V_ORG_INFO">
+            <soap12:operation soapAction="http://tempuri.org/Get_All_V_ORG_INFO"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_PERIOD">
+            <soap12:operation soapAction="http://tempuri.org/SP_GET_CONFERENCE_PERIOD"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_SESSIONS">
+            <soap12:operation soapAction="http://tempuri.org/SP_GET_CONFERENCE_SESSIONS"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="lbsHttpGet" type="tns:lbsHttpGet">
+        <http:binding verb="GET"/>
+        <wsdl:operation name="RequestLocation">
+            <http:operation location="/RequestLocation"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="mt">
+            <http:operation location="/mt"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="query">
+            <http:operation location="/query"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getReport">
+            <http:operation location="/getReport"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMO">
+            <http:operation location="/getMO"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GET_SP_PRES_ACCEPT_INFO">
+            <http:operation location="/GET_SP_PRES_ACCEPT_INFO"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_AMBUL_OUTD_INFO">
+            <http:operation location="/SP_GET_AMBUL_OUTD_INFO"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_EMT_INFO">
+            <http:operation location="/SP_GET_EMT_INFO"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CLLB_INFO">
+            <http:operation location="/Get_All_CLLB_INFO"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_ALL_TerminalDB_INFO">
+            <http:operation location="/SP_GET_ALL_TerminalDB_INFO"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_REQUEST_INFO">
+            <http:operation location="/Get_All_REQUEST_INFO"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CONFERENCE_INFO">
+            <http:operation location="/Get_All_CONFERENCE_INFO"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_CONFRENCE">
+            <http:operation location="/RMG_INSERT_CONFRENCE"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="INSERT_TMG_REQUEST">
+            <http:operation location="/INSERT_TMG_REQUEST"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_UPDATE_SESSIONS">
+            <http:operation location="/SP_UPDATE_SESSIONS"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_ADVICE">
+            <http:operation location="/RMG_INSERT_ADVICE"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="remoteRequire">
+            <http:operation location="/remoteRequire"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Check_Sys_Member_Info">
+            <http:operation location="/Check_Sys_Member_Info"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_V_ORG_INFO">
+            <http:operation location="/Get_All_V_ORG_INFO"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_PERIOD">
+            <http:operation location="/SP_GET_CONFERENCE_PERIOD"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_SESSIONS">
+            <http:operation location="/SP_GET_CONFERENCE_SESSIONS"/>
+            <wsdl:input>
+                <http:urlEncoded/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="lbsHttpPost" type="tns:lbsHttpPost">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="RequestLocation">
+            <http:operation location="/RequestLocation"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="mt">
+            <http:operation location="/mt"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="query">
+            <http:operation location="/query"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getReport">
+            <http:operation location="/getReport"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMO">
+            <http:operation location="/getMO"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GET_SP_PRES_ACCEPT_INFO">
+            <http:operation location="/GET_SP_PRES_ACCEPT_INFO"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_AMBUL_OUTD_INFO">
+            <http:operation location="/SP_GET_AMBUL_OUTD_INFO"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_EMT_INFO">
+            <http:operation location="/SP_GET_EMT_INFO"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CLLB_INFO">
+            <http:operation location="/Get_All_CLLB_INFO"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_ALL_TerminalDB_INFO">
+            <http:operation location="/SP_GET_ALL_TerminalDB_INFO"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_REQUEST_INFO">
+            <http:operation location="/Get_All_REQUEST_INFO"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_CONFERENCE_INFO">
+            <http:operation location="/Get_All_CONFERENCE_INFO"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_CONFRENCE">
+            <http:operation location="/RMG_INSERT_CONFRENCE"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="INSERT_TMG_REQUEST">
+            <http:operation location="/INSERT_TMG_REQUEST"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_UPDATE_SESSIONS">
+            <http:operation location="/SP_UPDATE_SESSIONS"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RMG_INSERT_ADVICE">
+            <http:operation location="/RMG_INSERT_ADVICE"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="remoteRequire">
+            <http:operation location="/remoteRequire"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Check_Sys_Member_Info">
+            <http:operation location="/Check_Sys_Member_Info"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get_All_V_ORG_INFO">
+            <http:operation location="/Get_All_V_ORG_INFO"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_PERIOD">
+            <http:operation location="/SP_GET_CONFERENCE_PERIOD"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SP_GET_CONFERENCE_SESSIONS">
+            <http:operation location="/SP_GET_CONFERENCE_SESSIONS"/>
+            <wsdl:input>
+                <mime:content type="application/x-www-form-urlencoded"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:mimeXml part="Body"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="lbs">
+        <wsdl:port name="lbsSoap" binding="tns:lbsSoap">
+            <soap:address location="http://180.109.80.228:6454/lbs.asmx"/>
+        </wsdl:port>
+        <wsdl:port name="lbsSoap12" binding="tns:lbsSoap12">
+            <soap12:address location="http://180.109.80.228:6454/lbs.asmx"/>
+        </wsdl:port>
+        <wsdl:port name="lbsHttpGet" binding="tns:lbsHttpGet">
+            <http:address location="http://180.109.80.228:6454/lbs.asmx"/>
+        </wsdl:port>
+        <wsdl:port name="lbsHttpPost" binding="tns:lbsHttpPost">
+            <http:address location="http://180.109.80.228:6454/lbs.asmx"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

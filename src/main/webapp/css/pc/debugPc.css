@@ -1,0 +1,47 @@
+select {
+    opacity: 1;
+    /**position: absolute;**/
+    width: 152px;
+    height: 32px;
+    font-size: 15px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    color: rgb(0, 102, 102);
+    background: rgba(0, 0, 0, 0.027451);
+}
+
+.subtitle {
+    text-align: left;
+    width: 90%;
+    margin: 5px 0px;
+}
+
+.subtitle span {
+    margin: 0px 10px;
+    color: #14705b;
+}
+
+input.valueCode {
+    width: 55px;
+    height: 20px;
+    font-size: 20px;
+    color: red;
+    float: left;
+    margin-top: 5px;
+}
+
+input.remark {
+    width: 300px !important;
+    height: 20px;
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+}
+
+#cantPrv {
+    color: red;
+    font-size: 25px;
+}

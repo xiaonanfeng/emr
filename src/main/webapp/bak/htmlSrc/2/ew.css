@@ -1,0 +1,90 @@
+.tab_div {
+    position: relative;
+    margin: auto;
+    background: rgba(0, 0, 0, 0);
+    margin-top: 50px;
+}
+
+.tab_div > dl {
+    display: block;
+    margin: auto 20px;
+    padding: 0px;
+    position: relative;
+    top: 0px;
+}
+
+.tab_div_dt {
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #dbefd1;
+    line-height: 22px;
+    padding: 5px;
+    margin: 3px;
+    cursor: pointer;
+    color: #307032;
+    font-weight: bold;
+}
+
+.tab_div_dt_active {
+    background: linear-gradient(180deg, #00800e 0%, #146d1f 100%);
+    color: #fff;
+}
+
+.tab_div > dd {
+    display: block;
+    width: 100%;
+    height: 5px;
+    background: rgba(56, 144, 39, 1.00);
+}
+
+.tab_div_line {
+    height: 5px;
+    background: #146d1f;
+    position: relative;
+    top: -3px;
+}
+
+.tab_div > ul {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+}
+
+.tab_div > ul > li {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    background: none;
+    display: none;
+}
+
+/******验证样式********/
+label {
+    color: red;
+    font-weight: 15px;
+}
+
+input.error {
+    border: 1px solid red;
+}
+
+label.error {
+    background: url("./demo/images/unchecked.gif") no-repeat 0px 0px;
+
+    padding-left: 16px;
+
+    padding-bottom: 2px;
+
+    font-weight: bold;
+
+    color: red;
+
+    text-decoration: blink;
+}
+
+label.checked {
+    background: url("./demo/images/checked.gif") no-repeat 0px 0px;
+}
+
+/****************/
