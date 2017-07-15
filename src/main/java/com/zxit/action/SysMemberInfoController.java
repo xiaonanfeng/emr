@@ -24,23 +24,26 @@ public class SysMemberInfoController {
         TObject tObject = new TObject();
         tObject.setStyle("select_short");//半个select
         List<SysMemberInfo> listMember;
-        //医生select
-        listMember = sysMemberInfoService.findSysMemberInfoByType(Constants.doctorSign, orgId);
-        tObject.setSelectIdAndName("ysid");
-        String docsList = sysMemberInfoService.createMemberInfoSelect(tObject, listMember)+"/";
+//        String docsList="";
+        String nurseList;
+        String driverList;
+//        //医生select
+//        listMember = sysMemberInfoService.findSysMemberInfoByType(Constants.doctorSign, orgId);
+//        tObject.setSelectIdAndName("ysid");
+//        docsList = sysMemberInfoService.createMemberInfoSelect(tObject, listMember)+"/";
 
         //护士select
         listMember = sysMemberInfoService.findSysMemberInfoByType(Constants.nurseSign, orgId);
         tObject.setSelectIdAndName("nurse");
-        String nurseList = sysMemberInfoService.createMemberInfoSelect(tObject, listMember);
+        nurseList = sysMemberInfoService.createMemberInfoSelect(tObject, listMember);
         nurseList = nurseList.length()==0?"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;":nurseList;
         nurseList = nurseList+"/";
 
         listMember = sysMemberInfoService.findSysMemberInfoByType(Constants.driverSign, orgId);
         tObject.setSelectIdAndName("driver");
-        String driverList = sysMemberInfoService.createMemberInfoSelect(tObject, listMember);
+        driverList = sysMemberInfoService.createMemberInfoSelect(tObject, listMember);
 
-        return docsList+nurseList+driverList;
+        return nurseList+driverList;
     }
 
 }

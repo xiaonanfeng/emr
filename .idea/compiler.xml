@@ -27,6 +27,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="emr" target="1.8" />
+      <module name="persistence" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -176,7 +176,6 @@
 // 		custom_options($("#arrivalVs"),'${misEmrPreaidVs.arrivalVs}');
         //救治成功率
         var preaidStatStr = '${misEmrPreaidVs.preaidVsStat}';
-        console.log(preaidStatStr=="");
         if (preaidStatStr!=""){
             var preaidStatArr = JSON.parse(preaidStatStr);
             for (var i = 0; i < preaidStatArr.length; i++) {

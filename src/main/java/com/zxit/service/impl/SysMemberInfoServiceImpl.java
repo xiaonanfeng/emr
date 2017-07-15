@@ -1,20 +1,18 @@
 package com.zxit.service.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.apache.log4j.Logger;
-import org.hibernate.Query;
-import org.springframework.stereotype.Service;
-
 import com.zxit.dao.ABaseDao;
 import com.zxit.model.SysMemberInfo;
 import com.zxit.model.TObject;
 import com.zxit.service.SysMemberInfoService;
 import com.zxit.share.SystemConfig;
+import org.apache.log4j.Logger;
+import org.hibernate.Query;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Service("sysMemberInfoService")
 public class SysMemberInfoServiceImpl implements SysMemberInfoService {
@@ -44,7 +42,16 @@ public class SysMemberInfoServiceImpl implements SysMemberInfoService {
     @SuppressWarnings("unchecked")
     @Override
     public List<SysMemberInfo> findSysMemberInfoByType(Integer type, String orgId) {
-        String hql = " from SysMemberInfo t where t.type = '" + type + "'  and flag = '0'  and org_id = '" + orgId + "' ";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(" from SysMemberInfo t where flag = '0' and ");
+        if (type!=null){
+            stringBuilder.append(" t.type = '" + type + "' and ");
+        }
+        if(orgId!=null&&orgId!=""){
+            stringBuilder.append(" t.sysOrgInfo.orgId = '" + orgId + "' and ");
+        }
+        stringBuilder.append(" 1=1 ");
+        String hql = stringBuilder.toString();
         List<SysMemberInfo> list = aBaseDao.findByHQL(hql).list();
         return list;
     }

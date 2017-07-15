@@ -33,7 +33,9 @@ public class MisEmrPreaidVsServiceImpl implements MisEmrPreaidVsService {
     public MisEmrPreaidVs findMisEmrPreaidVsById(String id) {
         MisEmrPreaidVs misEmrPreaidVs = aBaseDao.findById(MisEmrPreaidVs.class, id);
         List<MisEmrPreaidStat> list = misEmrPreaidStatService.findByEmrId(id);
-        misEmrPreaidVs.setPreaidVsStat(JSON.toJSONString(list));
+        if(misEmrPreaidVs!=null){
+            misEmrPreaidVs.setPreaidVsStat(JSON.toJSONString(list));
+        }
         return misEmrPreaidVs;
     }
 

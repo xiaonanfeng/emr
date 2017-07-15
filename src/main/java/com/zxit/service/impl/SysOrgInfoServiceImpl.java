@@ -62,7 +62,7 @@ public class SysOrgInfoServiceImpl implements SysOrgInfoService {
         //TODO 如果数据是合法的话，这是一个多余判断
         List<SysOrgInfo> list = aBaseDao.findByHQL(hql).list();
         if (list.size() > 1) {
-            sysOrgInfo = (SysOrgInfo) list.get(0);
+            sysOrgInfo = list.get(0);
         } else {
             sysOrgInfo = (SysOrgInfo) aBaseDao.findByHQL(hql).uniqueResult();
         }
@@ -81,9 +81,8 @@ public class SysOrgInfoServiceImpl implements SysOrgInfoService {
      */
     @Override
     public List<SysOrgInfo> findScenter4Center() {
-        String hql = " from SysOrgInfo t where t.sfzx = '1' and  (t.type = '20' or t.type = '10') "
-                //+ " or (t.type = '30' and t.ssjgdm in ( select a.orgId from SysOrgInfo a where a.type = '10' ) )"
-                //+ " or (t.type = '10') "
+        //TODO 宁波要求的修改，不知道是否符合郑州
+        String hql = " from SysOrgInfo t where t.sfzx = '1' and  (t.type = '40' or t.type = '20' or t.type = '10') "
                 + " order by t.type,t.orgId*1";
         List<SysOrgInfo> list = this.findOrgsByHql(hql);
         return list;

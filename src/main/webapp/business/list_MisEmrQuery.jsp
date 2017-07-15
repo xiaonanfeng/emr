@@ -6,14 +6,9 @@
     <script>
         $(document).ready(function () {
             init();//初始化值
-
             var this_ssjgdm = '${vMisEmrQuery.ssjgdm}';
-            if (this_ssjgdm == null || this_ssjgdm == "") {
-                if (${orgType == center}) {//如果是中心
-                    this_ssjgdm = '${centerOrg}';//就是中心代码
-                } else {//如果是分中心或者分站，就是分中心的代码
-                    this_ssjgdm = '${sysMemberInfo.sysOrgInfo.ssjgdm}';
-                }
+            if (${orgType != center}) {//如果不是中心，则默认给所属机构赋值
+                this_ssjgdm = '${sysMemberInfo.sysOrgInfo.ssjgdm}';
             }
             //初始化select的值
             custom_options($("#ssjgdm"), this_ssjgdm);
@@ -117,7 +112,7 @@
                         initDocsId($(this).val());
                     });
                 },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                error: function (XMLHttpRequest, textStatus) {
                     alert(XMLHttpRequest.status);
                     alert(XMLHttpRequest.readyState);
                     alert(textStatus);
@@ -134,8 +129,7 @@
                     url: "${ctx}/sysMemberInfo.do?method=findMemberSelectByOrgId&orgId=" + l_orgId,
                     type: "post",
                     success: function (data) {
-                        $("#docList").empty().html(data);
-                        custom_options($("#ysid"), '${vMisEmrQuery.ysid}');
+                        $("#memList").empty().html(data);
                         custom_options($("#nurse"), '${vMisEmrQuery.nurse}');
                         custom_options($("#driver"), '${vMisEmrQuery.driver}');
                     },
@@ -225,7 +219,7 @@
                 </td>
 
                 <c:if test="${orgType == center}">
-                    <td nowrap="true" align="right">分中心和直属单位</td>
+                    <td nowrap="true" align="right">中心|直属</td>
                     <td nowrap="true" align="left">
                             ${ssjgdm }
                     </td>
@@ -238,15 +232,15 @@
                     </td>
                 </c:if>
 
+
                 <td nowrap="true" align="right">医/护/司</td>
                 <td nowrap="true" align="left">
-                    <div id="docList">
-                    </div>
-                    <div id="nurseList">
-                    </div>
-                    <div id="driverList">
+                    <input type="text" name="ysid" id="ysid" value="${vMisEmrQuery.ysid }" class="select_short"/>
+                    <div id="memList">
                     </div>
                 </td>
+
+
             </tr>
             <tr>
                 <td nowrap="true" align="right">年龄段</td>

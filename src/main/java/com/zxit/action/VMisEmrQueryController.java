@@ -49,7 +49,6 @@ public class VMisEmrQueryController {
          * 送往分站
          */
         t = new TObject("sentTo", "", "");
-        listCode = new ArrayList<SysCode>();
         orgList = sysOrgInfoService.findSysOrgInfoFroSW();
         orgSelect = sysOrgInfoService.createSysOrgSelect(t, orgList);
         request.setAttribute("sentTo", orgSelect);

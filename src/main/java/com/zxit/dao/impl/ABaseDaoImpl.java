@@ -1,23 +1,16 @@
 package com.zxit.dao.impl;
 
+import com.zxit.dao.ABaseDao;
+import org.hibernate.*;
+import org.springframework.stereotype.Repository;
+
+import javax.annotation.Resource;
 import java.io.Serializable;
 import java.sql.Clob;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import javax.annotation.Resource;
-
-import org.hibernate.Criteria;
-import org.hibernate.LobHelper;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Repository;
-
-import com.zxit.dao.ABaseDao;
 
 
 @Repository("aBaseDao")
@@ -120,7 +113,6 @@ public class ABaseDaoImpl implements ABaseDao {
                 session.saveOrUpdate(entity);
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println(entity.getClass().toString());
             }
             if (i % 20 == 0) {
                 session.flush();
