@@ -104,7 +104,6 @@ public class MisEmrPreaidVsController {
     @RequestMapping(params = "method=findSceneTreatlects")
     public String findSceneTreatlects(HttpServletRequest request) {
         List<SysCode> list = sysCodeService.findSysCodeByPid(Constants.sceneTreat);
-
         List<String> values = java.util.Arrays.asList(request.getParameter("values").split(","));//转成list
         TObject t = new TObject();
         t.setSelectIdAndName("select");

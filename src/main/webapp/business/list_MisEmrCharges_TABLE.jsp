@@ -72,6 +72,5 @@
 
 </center>
 <%@ include file="/busvald/chargesValidator.jsp" %>
-<!-- <button type="button" class="btn" id="printCharge">打印</button> -->
 </body>
 </html>

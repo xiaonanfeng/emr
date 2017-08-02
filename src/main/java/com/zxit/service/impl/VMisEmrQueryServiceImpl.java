@@ -17,8 +17,6 @@ public class VMisEmrQueryServiceImpl implements VMisEmrQueryService {
     @Resource
     private ABaseDao aBaseDao;
     @Resource
-    private SysAmbulInfoService sysAmbulInfoService;
-    @Resource
     private SysOrgInfoService sysOrgInfoService;
     @Resource
     private SysMemberInfoService sysMemberInfoService;
@@ -29,13 +27,14 @@ public class VMisEmrQueryServiceImpl implements VMisEmrQueryService {
     @Resource
     private SystemConfig systemConfig;
 
+
     private Logger log = Logger.getLogger(VMisEmrQueryServiceImpl.class);
 
 
     @Override
     public List<VMisEmrQuery> findVMisEmrQueryPager(String hql, int startNum,
                                                     int pageTotal) {
-        List<VMisEmrQuery> list = aBaseDao.findWithPager(VMisEmrQuery.class, hql, startNum, pageTotal);
+        List<VMisEmrQuery> list = aBaseDao.findWithSQLPager(VMisEmrQuery.class, hql, startNum, pageTotal);
         //呼救时刻、患者姓名、性别、年龄、疾病分类、病情、初步诊断、分站（只需显示站号）、救治结果、送往医院、医生
 
         for (VMisEmrQuery d : list) {
@@ -77,19 +76,20 @@ public class VMisEmrQueryServiceImpl implements VMisEmrQueryService {
     }
 
     @Override
-    public int findCount(String hql) {
-        return aBaseDao.findTotalByHQL(hql);
+    public int findCount(String sql) {
+        return aBaseDao.findTotalBySQL(sql);
     }
 
 
     /**
      * 必要查询条件
      * 开始时刻、结束时刻、患者姓名、性别、病情、分站（只需显示站号）、救治结果、电话、送往地点、疾病分类、年龄段选择、提交
+     * TODO 在未知情况下 医生id和数据权限两个集合in查询出bug 暂未解决  所以不得已，用原生sql查询
      */
     @Override
     public String createHQL(VMisEmrQuery VMisEmrQuery) {
         StringBuilder builder = new StringBuilder();
-        builder.append(" from VMisEmrQuery t where ");
+        builder.append(" select * from V_MIS_EMR_QUERY t where ");
         if (VMisEmrQuery != null) {
             String timeBegin = VMisEmrQuery.getTimebegin();
             String timeOver = VMisEmrQuery.getTimeover();
@@ -110,10 +110,24 @@ public class VMisEmrQueryServiceImpl implements VMisEmrQueryService {
             Integer isCommitted = VMisEmrQuery.getIsCommitted();
             String memberId = VMisEmrQuery.getMemberId();
             Integer orgType = VMisEmrQuery.getOrgType();
-            String createUserId = VMisEmrQuery.getCreateuserid();
             String nurse = VMisEmrQuery.getNurse();
             String driver = VMisEmrQuery.getDriver();
             String clid = VMisEmrQuery.getClid();
+            //数据级权限
+            String sqlSuffixString = findOrgIdsFromSqlsuffix(memberId, orgId);
+            /**
+             * 如果显示自己被打勾或者单位类型是分站并且是强制私有模式
+             */
+            if (orgType == Constants.station && systemConfig.getShareMode() == 0) {//分站模式
+                builder.append("(t.id = '" + memberId + "' or t.createuserid = '" + memberId + "') and ");
+            }
+            if (sqlSuffixString.length() != 0) {
+                builder.append("(t.szfz in  " + sqlSuffixString + ") and");
+            }
+            //医生ID TODO 这个地方存在bug 呵呵呵呵呵呵
+            if (null != ysid && ysid != "") {
+                builder.append("( t.id in (" + ysid + ")) and ");
+            }
             //时间
             if (timeBegin != null && timeBegin != "") {//开始时刻
                 builder.append("  to_char(t.hjsj,'yyyy-mm-dd hh24:mi:ss') >= '" + timeBegin + "' and ");
@@ -143,7 +157,7 @@ public class VMisEmrQueryServiceImpl implements VMisEmrQueryService {
             }
             //救治结果
             if (null != preEmcResult) {
-                builder.append("  t.preEmcResult = '" + preEmcResult + "' and ");
+                builder.append("  t.pre_Emc_Result = '" + preEmcResult + "' and ");
             }
             //电话
             if (null != phone) {
@@ -151,15 +165,15 @@ public class VMisEmrQueryServiceImpl implements VMisEmrQueryService {
             }
             //送往地点
             if (null != sendTo && sendTo.length() != 0) {
-                builder.append("  t.sentTo = '" + sendTo + "' and ");
+                builder.append("  t.sent_To = '" + sendTo + "' and ");
             }
             //疾病分类
             if (null != diseaseType) {
-                builder.append("  t.diseaseType = '" + diseaseType + "' and ");
+                builder.append("  t.disease_Type = '" + diseaseType + "' and ");
             }
             //疾病分类
             if (null != dClassify) {
-                builder.append("  t.dClassify = '" + dClassify + "' and ");
+                builder.append("  t.d_Classify = '" + dClassify + "' and ");
             }
             //年龄段
             if (null != stage) {
@@ -167,7 +181,7 @@ public class VMisEmrQueryServiceImpl implements VMisEmrQueryService {
             }
             //提交
             if (null != isCommitted) {
-                builder.append("  t.isCommitted = " + isCommitted + " and ");
+                builder.append("  t.is_Committed = " + isCommitted + " and ");
             }
             //护士
             if (null != nurse && nurse != "") {
@@ -177,30 +191,14 @@ public class VMisEmrQueryServiceImpl implements VMisEmrQueryService {
             if (null != driver && driver != "") {
                 builder.append(" t.driver = '" + driver + "' and ");
             }
-            //医生ID
-            if (null != ysid && ysid != "") {
-                builder.append("  t.id = '" + ysid + "' and ");
-            }
             //车辆编号
             if (null != clid && clid != "") {
-                builder.append("  t.clid = '" + clid + "' and ");
+                builder.append(" t.clid = '" + clid + "' and ");
             }
             //显示自己
             if (null != id && id != "") {
                 builder.append("  (t.id = '" + id + "' or t.createuserid = '" + id + "') and ");
             }
-            //数据级权限
-            String sqlSuffixString = findOrgIdsFromSqlsuffix(memberId, orgId);
-            /**
-             * 如果显示自己被打勾或者单位类型是分站并且是强制私有模式
-             */
-            if (orgType == Constants.station && systemConfig.getShareMode() == 0) {//分站模式
-                builder.append("  (t.id = '" + memberId + "' or t.createuserid = '" + memberId + "') and ");
-            }
-            if (sqlSuffixString.length() != 0) {
-                builder.append(" t.szfz in " + sqlSuffixString + " and");
-            }
-
         }
         return builder.toString();
     }
@@ -222,7 +220,7 @@ public class VMisEmrQueryServiceImpl implements VMisEmrQueryService {
 
     @Override
     public VMisEmrQuery findVMisEmrQueryById(String id) {
-        return (VMisEmrQuery) aBaseDao.findById(VMisEmrQuery.class, id);
+        return aBaseDao.findById(VMisEmrQuery.class, id);
     }
 
     @Override

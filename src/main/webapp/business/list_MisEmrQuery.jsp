@@ -34,15 +34,6 @@
             //初始化select的值
             custom_options($("#szfz"), '${vMisEmrQuery.szfz}');
 
-            if ('${vMisEmrQuery.szfz}' == null || '${vMisEmrQuery.szfz}' == "") {//分站选择医生记忆
-                if ('${systemConfig.shareMode}' == 1) {
-                    initDocsId('${sysMemberInfo.sysOrgInfo.orgId}');
-                }
-            } else {//中心选择医生记忆
-                initDocsId('${vMisEmrQuery.szfz}');
-            }
-
-
             /**
              **回车启动查询
              **/
@@ -94,8 +85,18 @@
                 $("#dataform").submit();
             });
 
+            //医生选择器
+            $("#ysidText").focus(function () {
+                var orgId = $("#szfz").val();
+                orgId = orgId==undefined?"":orgId;
+                console.log(orgId);
+                open_layer('选择出诊医生','${ctx}/misEmrQuery.do?method=findDoctors&values=${vMisEmrQuery.ysid}&flag=ysid&orgId='+orgId,1000,500);
+            });
+
+
 
         });
+
 
         /**
          **根据分中心列举分站
@@ -108,9 +109,6 @@
                 success: function (data) {
                     $("#szfzTd").empty().html(data);
                     $("#szfz").val('${vMisEmrQuery.szfz}');
-                    $("#szfz").change(function () {
-                        initDocsId($(this).val());
-                    });
                 },
                 error: function (XMLHttpRequest, textStatus) {
                     alert(XMLHttpRequest.status);
@@ -129,9 +127,6 @@
                     url: "${ctx}/sysMemberInfo.do?method=findMemberSelectByOrgId&orgId=" + l_orgId,
                     type: "post",
                     success: function (data) {
-                        $("#memList").empty().html(data);
-                        custom_options($("#nurse"), '${vMisEmrQuery.nurse}');
-                        custom_options($("#driver"), '${vMisEmrQuery.driver}');
                     },
                     error: function (XMLHttpRequest, textStatus) {
                         alert(textStatus + ":" + XMLHttpRequest.status + ":" + XMLHttpRequest.readyState);
@@ -233,11 +228,10 @@
                 </c:if>
 
 
-                <td nowrap="true" align="right">医/护/司</td>
+                <td nowrap="true" align="right">出诊医生</td>
                 <td nowrap="true" align="left">
-                    <input type="text" name="ysid" id="ysid" value="${vMisEmrQuery.ysid }" class="select_short"/>
-                    <div id="memList">
-                    </div>
+                    <input type="text" name="ysidText" id="ysidText"/>
+                    <input type="hidden" name="ysid" id="ysid"/>
                 </td>
 
 

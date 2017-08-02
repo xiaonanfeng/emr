@@ -10,15 +10,6 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="org.apache.commons.lang.*" %>
-
-<%@ page import="com.zxit.tools.UtilDate" %>
-<%@ page import="com.zxit.share.Constants" %>
-<%@ page import="com.zxit.model.SysMemberInfo" %>
-<%@ page import="com.zxit.share.CreaterPK" %>
-
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";

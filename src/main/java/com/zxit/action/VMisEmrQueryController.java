@@ -5,6 +5,7 @@ import com.zxit.service.*;
 import com.zxit.share.Constants;
 import com.zxit.share.Pager;
 import com.zxit.share.SystemConfig;
+import com.zxit.tools.ServletParameter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -27,6 +28,10 @@ public class VMisEmrQueryController {
     private SysSelectService sysSelectService;//select构造器
     @Resource
     private SystemConfig systemConfig;
+    @Resource
+    private SysSelectMultiService sysSelectMultiService;
+    @Resource
+    private SysMemberInfoService sysMemberInfoService;
 
 
     /**
@@ -138,6 +143,22 @@ public class VMisEmrQueryController {
 
         return "/business/list_MisEmrQuery";
     }
+
+
+    @RequestMapping(params = "method=findDoctors")
+    public String findDoctors(HttpServletRequest request) {
+        String orgId = ServletParameter.getParameter(request,"orgId","");
+        List<SysMemberInfo> list = sysMemberInfoService.findSysMemberInfoByType(Constants.doctorSign,orgId);
+        List<String> values = java.util.Arrays.asList(request.getParameter("values").split(","));//转成list
+        TObject t = new TObject();
+        t.setSelectIdAndName("select");
+        t.setInitStr(values);
+        t.setObecjtName(Constants.SysMemberInfo);
+        String select = sysSelectMultiService.createMultiSelect(t, list);
+        request.setAttribute("select", select);
+        return "chooser";
+    }
+
 
 
 }

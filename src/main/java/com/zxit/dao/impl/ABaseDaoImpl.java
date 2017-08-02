@@ -2,15 +2,14 @@ package com.zxit.dao.impl;
 
 import com.zxit.dao.ABaseDao;
 import org.hibernate.*;
+import org.hibernate.hql.internal.ast.QueryTranslatorImpl;
+import org.hibernate.internal.SessionFactoryImpl;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
 import java.sql.Clob;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 @Repository("aBaseDao")
@@ -42,10 +41,16 @@ public class ABaseDaoImpl implements ABaseDao {
 
     @Override
     public int findTotalByHQL(String hql) {
-        hql = "select count(1) " + hql;
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery(hql);
-        Number num = (Number) query.uniqueResult();
+        Number num = null;
+        try {
+            hql = "select count(1) " + hql;
+            System.out.println(hql);
+            Session session = sessionFactory.getCurrentSession();
+            Query query = session.createQuery(hql);
+            num = (Number) query.uniqueResult();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return num.intValue();
     }
 
@@ -54,6 +59,15 @@ public class ABaseDaoImpl implements ABaseDao {
     public <T> List<T> findWithPager(Class<T> type, String hql, int startNum, int pageTotal) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(hql);
+        query.setFirstResult(startNum);
+        query.setMaxResults(pageTotal);
+        return query.list();
+    }
+
+    @Override
+    public <T> List<T> findWithSQLPager(Class<T> type, String sql, int startNum, int pageTotal) {
+        Session session = sessionFactory.getCurrentSession();
+        SQLQuery query = session.createSQLQuery(sql).addEntity(type);
         query.setFirstResult(startNum);
         query.setMaxResults(pageTotal);
         return query.list();
@@ -98,7 +112,8 @@ public class ABaseDaoImpl implements ABaseDao {
     @Override
     public int findTotalBySQL(String sql) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createSQLQuery("select count(1) from (" + sql + ")");
+        String countSQL = "select count(1) from (" + sql + ")";
+        SQLQuery query = session.createSQLQuery(countSQL);
         Number num = (Number) query.uniqueResult();
         return num.intValue();
     }
@@ -219,6 +234,18 @@ public class ABaseDaoImpl implements ABaseDao {
     public Criteria createCriteria(Class<?> type) {
         Session session = sessionFactory.getCurrentSession();
         return session.createCriteria(type);
+    }
+
+    @Override
+    public String transHqlToSQL(String hql) {
+        if (hql == null || hql.equals("")) {
+            return "";
+        }
+        SessionFactoryImpl sfi = (SessionFactoryImpl) sessionFactory;
+        QueryTranslatorImpl queryTranslator = new QueryTranslatorImpl(hql, hql, Collections.EMPTY_MAP, sfi);
+        queryTranslator.compile(Collections.EMPTY_MAP, false);
+        String sql = queryTranslator.getSQLString();
+        return sql;
     }
 
 }

@@ -1,10 +1,10 @@
 package com.zxit.service;
 
 
-import java.util.List;
-
 import com.zxit.model.SysMemberInfo;
 import com.zxit.model.TObject;
+
+import java.util.List;
 
 /**
  * 人员信息
@@ -13,11 +13,11 @@ import com.zxit.model.TObject;
  */
 public interface SysMemberInfoService {
 
-    public SysMemberInfo findSysMemberInfoById(String id);
+    SysMemberInfo findSysMemberInfoById(String id);
 
-    public List<SysMemberInfo> findSysMemberInfoByType(Integer type, String orgId);
+    List<SysMemberInfo> findSysMemberInfoByType(Integer type, String orgId);
 
-    public String createMemberInfoSelect(TObject t, List<SysMemberInfo> listNurse);
+    String createMemberInfoSelect(TObject t, List<SysMemberInfo> listNurse);
 
     /**
      * 医生
@@ -28,6 +28,6 @@ public interface SysMemberInfoService {
      * @param memberList
      * @return
      */
-    public List<SysMemberInfo> findMembersByArr(List<String> memberList);
+    List<SysMemberInfo> findMembersByArr(List<String> memberList);
 
 }

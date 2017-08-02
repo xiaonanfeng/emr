@@ -16,7 +16,6 @@
             if (vld_charges.form() == false) {
                 return;
             }
-            ;
             //重新计算
             initValues();
             //收费主表对象组装
@@ -34,7 +33,7 @@
             };
 
             //收费从表对象组装
-            var misEmrChargesNote = new Array()//声明提交对象
+            var misEmrChargesNote = []//声明提交对象
             //收费数组的长度
             <c:forEach var='list' items='${list}'>//循环push
             misEmrChargesNote.push({
@@ -66,7 +65,7 @@
                     alert(textStatus + "错误:" + data.responseText);
                 }
             });
-        });
+        });;
 
     });//JQUERY结束
 
@@ -156,7 +155,6 @@
     //就隐藏保存、提交、附件
     function selfControl() {
         var createuserid = '${misEmrBasicinfo.createuserid}';
-        console.log(createuserid);
         if (createuserid != '${sysMemberInfo.id}' && createuserid != null && createuserid.length > 0) {
             $("#saveCharges").hide();
         }

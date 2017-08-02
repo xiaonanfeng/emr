@@ -1,13 +1,12 @@
 package com.zxit.interceptor;
 
 
-import java.io.PrintWriter;
-import java.util.Date;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.zxit.model.MisEmrActivity;
+import com.zxit.model.SysLogs;
+import com.zxit.model.SysMemberInfo;
+import com.zxit.service.MisEmrActivityService;
+import com.zxit.service.SysLogsService;
+import com.zxit.share.Constants;
 import org.apache.log4j.Logger;
 import org.hibernate.exception.SQLGrammarException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -16,14 +15,11 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
-import com.zxit.model.MisEmrActivity;
-import com.zxit.model.SysLogs;
-import com.zxit.model.SysMemberInfo;
-import com.zxit.service.MisEmrActivityService;
-import com.zxit.service.MisEmrTemplatePageService;
-import com.zxit.service.SysLogsService;
-import com.zxit.service.SysMemberInfoService;
-import com.zxit.share.Constants;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
+import java.util.Date;
 
 /**
  * 全局拦截器
@@ -35,11 +31,7 @@ public class MVCInterceptor extends SimpleMappingExceptionResolver implements Ha
     @Resource
     private SysLogsService sysLogsService;
     @Resource
-    private MisEmrTemplatePageService misEmrTemplatePageService;
-    @Resource
     private MisEmrActivityService misEmrActivityService;
-    @Resource
-    private SysMemberInfoService sysMemberInfoService;
 
 
     private long timePoint;//方法开始执行时间
@@ -48,7 +40,7 @@ public class MVCInterceptor extends SimpleMappingExceptionResolver implements Ha
 
 
     //记录日志
-    Logger m_log = Logger.getLogger("com.zxit.interceptor.MVCInterceptor");
+    Logger m_log = Logger.getLogger(MVCInterceptor.class);
 
     /**
      * 执行前
@@ -171,7 +163,6 @@ public class MVCInterceptor extends SimpleMappingExceptionResolver implements Ha
     /**
      * @param type        类型
      * @param message     目标
-     * @param longmsg_str 错误信息字符串
      * @param note        备注
      */
     public void log2DB(String type, String message, String longmsg, String note) {
