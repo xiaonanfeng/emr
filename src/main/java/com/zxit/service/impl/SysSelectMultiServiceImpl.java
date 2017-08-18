@@ -1,16 +1,12 @@
 package com.zxit.service.impl;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
-import com.zxit.model.MisAmEmMedicine;
-import com.zxit.model.MisEmrIcd10;
-import com.zxit.model.SysCode;
-import com.zxit.model.TObject;
+import com.zxit.model.*;
 import com.zxit.service.SysSelectMultiService;
 import com.zxit.share.Constants;
 import com.zxit.tools.Cn2Spell;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service("sysSelectMultiService")
 public class SysSelectMultiServiceImpl implements SysSelectMultiService {
@@ -18,23 +14,23 @@ public class SysSelectMultiServiceImpl implements SysSelectMultiService {
     public <T> String createMultiSelect(TObject tObject, List<T> list) {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("<select superSelect=\"normal\" class='" + tObject.getStyle() + "' " + "id='"
+        sb.append("<select superSelect='normal' class='" + tObject.getStyle() + "' " + "id='"
                 + tObject.getSelectIdAndName() + "' " + "name='"
                 + tObject.getSelectIdAndName() + "' " + "onchange='"
                 + tObject.getOnChgMthd() + "' ");
-        sb.append("  multiple=\"multiple\" ");
+        sb.append("  multiple='multiple' ");
         sb.append(">");
-        try {
-            int i = list.size();
-            if (i == 0)
-                return "";
-            for (T d : list) {
+        int i = list.size();
+        if (i == 0)
+            return "";
+        for (T d : list) {
+            try {
                 // 如果是ICD10
                 if (tObject.getObecjtName().equals(Constants.icd10)) {
                     MisEmrIcd10 misEmrIcd10 = (MisEmrIcd10) d;
-                    sb.append("<option pvalue=\"" + misEmrIcd10.getId()
-                            + "\"  ptext = \"" + misEmrIcd10.getDiseaseName()
-                            + "\" value=\"" + misEmrIcd10.getId() + "\" ");
+                    sb.append("<option pvalue='" + misEmrIcd10.getId()
+                            + "'  ptext = '" + misEmrIcd10.getDiseaseName()
+                            + "' value='" + misEmrIcd10.getId() + "' ");
                     if (tObject.getInitStr().contains(
                             misEmrIcd10.getId().toString())) {
                         sb.append(" selected >");
@@ -48,17 +44,17 @@ public class SysSelectMultiServiceImpl implements SysSelectMultiService {
                 // 如果是药物
                 if (tObject.getObecjtName().equals(Constants.MisAmEmMedicine)) {
                     MisAmEmMedicine misAmEmMedicine = (MisAmEmMedicine) d;
-                    sb.append("<option pvalue=\""
+                    sb.append("<option pvalue='"
                             + misAmEmMedicine.getId()
-                            + "\"  ptext = \""
+                            + "'  ptext = '"
                             + misAmEmMedicine.getName()
                             + Cn2Spell.converterToFirstSpell(
                             misAmEmMedicine.getName().replace("：", "")
                                     .replace("（", "").replace("）", "")
                                     .replace("—", "").replace("％", ""))
                             .toUpperCase() + "（"
-                            + misAmEmMedicine.getSpecs() + "）" + "\" value=\""
-                            + misAmEmMedicine.getId() + "\" ");
+                            + misAmEmMedicine.getSpecs() + "）" + "' value='"
+                            + misAmEmMedicine.getId() + "' ");
                     sb.append(" >");
                     // }
                     try {
@@ -77,13 +73,27 @@ public class SysSelectMultiServiceImpl implements SysSelectMultiService {
                         System.out.println(misAmEmMedicine.getName());
                     }
                 }
+                //如果是人员
+                if (tObject.getObecjtName().equals(Constants.SysMemberInfo)) {
+                    SysMemberInfo sysMemberInfo = (SysMemberInfo) d;
+                    sb.append("<option pvalue='" + sysMemberInfo.getId() + "' "
+                            + "ptext = '" + sysMemberInfo.getName() + Cn2Spell.converterToFirstSpell(sysMemberInfo.getName().replace("　","").trim()).toUpperCase()
+                            + "（" + sysMemberInfo.getSysOrgInfo().getName() + "）" + "' value='" + sysMemberInfo.getId() + "' ");
+                    sb.append(" >");
+                    try {
+                        sb.append(sysMemberInfo.getName() + Cn2Spell.converterToFirstSpell(sysMemberInfo.getName().replace("　","").trim()).toUpperCase()
+                                + "（" + sysMemberInfo.getSysOrgInfo().getName() + "）" + "</option>");
+                    } catch (Exception e) {
+                        System.out.println(sysMemberInfo.getName());
+                    }
+                }
 
                 // 如果是syscode
                 if (tObject.getObecjtName().equals(Constants.sysCode)) {
                     SysCode sysCode = (SysCode) d;
-                    sb.append("<option pvalue=\"" + sysCode.getCode()
-                            + "\"  ptext = \"" + sysCode.getName()
-                            + "\" value=\"" + sysCode.getCode() + "\" ");
+                    sb.append("<option pvalue='" + sysCode.getCode()
+                            + "'  ptext = '" + sysCode.getName()
+                            + "' value='" + sysCode.getCode() + "' ");
                     if (tObject.getInitStr().contains(
                             sysCode.getCode().toString())) {
                         sb.append(" selected >");
@@ -101,12 +111,10 @@ public class SysSelectMultiServiceImpl implements SysSelectMultiService {
                         System.out.println(sysCode.getName());
                     }
                 }
-
+            } catch (Exception e) {
+                System.out.println(d);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        //System.out.println(sb.toString());
         sb.append("</select>");
         return sb.toString();
     }

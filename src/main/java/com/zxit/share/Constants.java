@@ -367,6 +367,7 @@ public final class Constants {
     public static final String icd10 = "com.zxit.model.MisEmrIcd10";
     public static final String sysCode = "com.zxit.model.SysCode";
     public static final String MisAmEmMedicine = "com.zxit.model.MisAmEmMedicine";
+    public static final String SysMemberInfo = "com.zxit.model.SysMemberInfo";
 
 
 }
