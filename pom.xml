@@ -474,7 +474,7 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <excludes>
-                    <!--<exclude>**/*.properties</exclude>-->
+                    <exclude>**/*.properties</exclude>
                 </excludes>
             </resource>
         </resources>
