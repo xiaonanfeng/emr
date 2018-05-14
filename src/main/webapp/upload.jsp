@@ -1,8 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
-<link rel="stylesheet" type="text/css"
-      href="${ctx}/js/upload/css/webuploader.css"/>
-<link rel="stylesheet" type="text/css"
-      href="${ctx}/js/upload/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="${ctx}/js/upload/css/webuploader.css"/>
+<link rel="stylesheet" type="text/css" href="${ctx}/js/upload/css/style.css"/>
 <script type="text/javascript" src="${ctx}/js/upload/js/webuploader.js"></script>
 <script type="text/javascript" src="${ctx}/js/upload/js/upload.js"></script>
 <div id="uploader" style="display: none;">
